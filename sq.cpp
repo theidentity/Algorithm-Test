@@ -86,7 +86,7 @@ public:
 		{
 			if (front == -1)
 				front = 0;
-			rear = (rear + 1) % (max+1);
+			rear = (rear + 1) % (max + 1);
 			a[rear] = v;
 		}
 		else
@@ -97,16 +97,16 @@ public:
 
 	int dequeue()
 	{
+		if (front == rear)
+		{
+			front = -1;
+			rear = -1;
+		}
 		if (!isEmpty())
 		{
 
 			int v = a[front];
-			if (front == rear)
-			{
-				front = -1;
-				rear = -1;
-			}
-			front = (front + 1) % (max+1);
+			front = (front + 1) % (max + 1);
 			return v;
 		}
 		else
@@ -124,6 +124,7 @@ public:
 
 	void printQueue()
 	{
+		cout << front << " " << rear << endl;
 		if (front == -1 && rear == -1)
 			printf("Queue is Empty\n");
 		else if (front <= rear)
@@ -160,6 +161,8 @@ int main()
 	q.dequeue();	q.printQueue();
 	q.dequeue();	q.printQueue();
 	q.dequeue();	q.printQueue();
+
+
 
 	return 0;
 }
